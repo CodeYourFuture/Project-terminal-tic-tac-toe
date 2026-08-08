@@ -15,9 +15,25 @@
             ['O', 'O', 'X']
         ];
 */
+const MIN_VALUE = 0;
+const MAX_VALUE = 2;
+const FREE_SPACE_CHAR = "_";
+
+let board = [
+  ["X", "_", "_"],
+  ["_", "X", "_"],
+  ["O", "O", "X"],
+];
 function validateMove(move, board) {
-    // Implement this at the end if you have time, otherwise you can help your teammates!
-    return true;
+  // Implement this at the end if you have time, otherwise you can help your teammates!
+  const [row, col] = move.split(",").map((num) => Number(num) - 1);
+
+  if (row < MIN_VALUE || row > MAX_VALUE) return false;
+  if (col < MIN_VALUE || col > MAX_VALUE) return false;
+
+  if (board[row][col] !== FREE_SPACE_CHAR) return false;
+
+  return true;
 }
 
 /*
@@ -32,5 +48,12 @@ function validateMove(move, board) {
             - Return true
 */
 export function makeMove(board, move, player) {
-    return false;
+  if (validateMove(move, board)) {
+    const [row, col] = move.split(",").map((num) => Number(num) - 1);
+    board[row][col] = player;
+    return true;
+  }
+  return false;
 }
+
+console.log(makeMove(board, "1,3", "O"));
