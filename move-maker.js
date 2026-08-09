@@ -19,11 +19,6 @@ const MIN_VALUE = 0;
 const MAX_VALUE = 2;
 const FREE_SPACE_CHAR = "_";
 
-let board = [
-  ["X", "_", "_"],
-  ["_", "X", "_"],
-  ["O", "O", "X"],
-];
 function validateMove(move, board) {
   // Implement this at the end if you have time, otherwise you can help your teammates!
   const [row, col] = move.split(",").map((num) => Number(num) - 1);
@@ -55,5 +50,3 @@ export function makeMove(board, move, player) {
   }
   return false;
 }
-
-console.log(makeMove(board, "1,3", "O"));
