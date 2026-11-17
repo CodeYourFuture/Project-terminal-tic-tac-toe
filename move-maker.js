@@ -16,8 +16,8 @@
         ];
 */
 function validateMove(move, board) {
-    // Implement this at the end if you have time, otherwise you can help your teammates!
-    return true;
+  // Implement this at the end if you have time, otherwise you can help your teammates!
+  return true;
 }
 
 /*
@@ -32,5 +32,7 @@ function validateMove(move, board) {
             - Return true
 */
 export function makeMove(board, move, player) {
+  if (!Array.isArray(board)) {
     return false;
+  }
 }
