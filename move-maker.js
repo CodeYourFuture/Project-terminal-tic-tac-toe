@@ -35,4 +35,11 @@ export function makeMove(board, move, player) {
   if (!Array.isArray(board)) {
     return false;
   }
+  const positions = move.split(",");
+  const row = Number(positions[0]);
+  const column = Number(positions[1]);
+  
+  if (row < 1 || row > 3 || column < 1 || column >3) {
+    return false;
+  }
 }
