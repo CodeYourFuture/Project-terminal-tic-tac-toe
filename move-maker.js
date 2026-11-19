@@ -22,7 +22,7 @@ function validateMove(move, board) {
   }
   const positions = move.split(",");
 
-  if ((positions.length !== 2)) {
+  if (positions.length !== 2) {
     return false;
   }
 
