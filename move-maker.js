@@ -16,8 +16,31 @@
         ];
 */
 function validateMove(move, board) {
-    // Implement this at the end if you have time, otherwise you can help your teammates!
-    return true;
+  // Implement this at the end if you have time, otherwise you can help your teammates!
+  if (!Array.isArray(board) || typeof move !== "string") {
+    return false;
+  }
+  const positions = move.split(",");
+
+  if (positions.length !== 2) {
+    return false;
+  }
+
+  const row = Number(positions[0]);
+  const column = Number(positions[1]);
+
+  if (
+    !Number.isInteger(row) ||
+    !Number.isInteger(column) ||
+    row < 1 ||
+    row > 3 ||
+    column < 1 ||
+    column > 3
+  ) {
+    return false;
+  }
+
+  return board[row - 1][column - 1] === "_";
 }
 
 /*
@@ -32,5 +55,16 @@ function validateMove(move, board) {
             - Return true
 */
 export function makeMove(board, move, player) {
+  if (!validateMove(move, board)) {
     return false;
+  }
+  const positions = move.split(",");
+  const row = Number(positions[0]);
+  const column = Number(positions[1]);
+
+  if (row < 1 || row > 3 || column < 1 || column > 3) {
+    return false;
+  }
+  board[row - 1][column - 1] = player;
+  return true;
 }
