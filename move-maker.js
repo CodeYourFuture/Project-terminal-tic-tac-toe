@@ -65,5 +65,6 @@ export function makeMove(board, move, player) {
   if (row < 1 || row > 3 || column < 1 || column > 3) {
     return false;
   }
-  board[row - 1][column - 1] === player;
+  board[row - 1][column - 1] = player;
+  return true;
 }
