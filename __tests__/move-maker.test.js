@@ -1,12 +1,65 @@
-import { makeMove } from "../move-maker.js"; 
+import { makeMove } from "../move-maker.js";
 
-test("makeMove should return false with an empty array", () => {
-  const move = [];
-  expect(makeMove(move)).toBe(false);
+const board = [
+  ["X", "_", "_"],
+  ["_", "X", "_"],
+  ["O", "O", "X"],
+];
+
+describe("makeMove", () => {
+  describe("Valid moves", () => {
+    test("returns true for an empty cell", () => {
+      expect(makeMove(board, "1,2", "0")).toBe(true);
+    });
+  });
+
+  describe("Invalid moves", () => {
+    test("returns false for an occupied cell", () => {
+      expect(makeMove(board, "1,1", "0")).toBe(false);
+    });
+
+    test("returns false for row outside the board", () => {
+      expect(makeMove(board, "4,1", "0")).toBe(false);
+    });
+
+    test("returns false for column outside the board", () => {
+      expect(makeMove(board, "1,4", "0")).toBe(false);
+    });
+
+    describe("Invalid input", () => {
+      test("returns false when the move is missing", () => {
+        expect(makeMove(board, "", "0")).toBe(false);
+      });
+
+      test("returns false when the move has the wrong format", () => {
+        expect(makeMove(board, "1-2", "0")).toBe(false);
+      });
+    });
+  });
 });
 
-test("makeMove should return false with a single element array", () => {
-  const move = [2];
-  expect(makeMove(move)).toBe(false);
-});
+// First cell (top-left) is empty	"1,2"	true
 
+// Last cell (bottom-right) is occupied	"3,3"	false
+
+// Row is zero	"0,1"	false
+
+// Column is zero	"1,0"	false
+
+// Row is too large	"4,1"	false
+
+// Column is too large	"1,4"	false
+
+// Decimal row	"1.5,2"	false
+
+// Missing column	"1,"	false
+
+// Missing row	",2"	false
+
+// Wrong separator	"1-2"	false
+
+// Cell already occupied	"1,1"	false
+
+// invalid player "A" false
+
+// invalid board shape row has only two cells
