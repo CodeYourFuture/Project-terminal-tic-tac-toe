@@ -37,29 +37,3 @@ describe("makeMove", () => {
     });
   });
 });
-
-// First cell (top-left) is empty	"1,2"	true
-
-// Last cell (bottom-right) is occupied	"3,3"	false
-
-// Row is zero	"0,1"	false
-
-// Column is zero	"1,0"	false
-
-// Row is too large	"4,1"	false
-
-// Column is too large	"1,4"	false
-
-// Decimal row	"1.5,2"	false
-
-// Missing column	"1,"	false
-
-// Missing row	",2"	false
-
-// Wrong separator	"1-2"	false
-
-// Cell already occupied	"1,1"	false
-
-// invalid player "A" false
-
-// invalid board shape row has only two cells
